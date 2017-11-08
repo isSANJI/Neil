@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class LooseCollider : MonoBehaviour {
 
-    public LevelManager levelManager;
+    private LevelManager myLevelManager;
 
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Trigger");
-        levelManager.LoadLevel("Win");
+        print("Collision");
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Collision");    
+        print("Trigger");
+        myLevelManager.LoadLevel("Lose");
     }
 
     // Use this for initialization
     void Start () {
+
+        myLevelManager = GameObject.FindObjectOfType<LevelManager>();
 		
 	}
 	

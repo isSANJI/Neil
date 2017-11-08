@@ -5,16 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-	public void LoadLevel(string name)
+	public void LoadLevel(string levelName)
     {
-        print("Level Load requested for " + name);
-        SceneManager.LoadScene(name); 
+        print("Loading level " + levelName);
+        //loads the Scene named levelName
+        SceneManager.LoadScene(levelName);
     }
 
     public void QuitGame()
     {
-        print("BYE!");
-        //UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
     }
-    
-  }
+
+    //loads next Scene in Build Settings
+    //make sure they are in the right order
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+            
+
+}

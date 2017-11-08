@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour {
 
-    // Use this for initialization
+	// Use this for initialization
 	void Start () {
 		
 	}
@@ -14,18 +14,14 @@ public class Paddle : MonoBehaviour {
 
         Vector3 paddlePosition = new Vector3(0.5f, this.transform.position.y, 0f);
 
-        float mousePosInBlocks = Input.mousePosition.x / Screen.width * 8;
-        print(mousePosInBlocks);
+        float mousPosInBlocks = (Input.mousePosition.x / Screen.width * 14) - 7f;
 
-        paddlePosition.x = Mathf.Clamp(mousePosInBlocks, 0.5f, 7.5f);
+        paddlePosition.x = Mathf.Clamp(mousPosInBlocks, -6f, 6f);
 
         this.transform.position = paddlePosition;
 
         
 
-        
 
-        
-		
-	}
+    }
 }

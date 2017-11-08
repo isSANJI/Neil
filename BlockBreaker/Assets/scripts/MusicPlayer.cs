@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour {
 
-    //static variables are shared across all instances of a class
+    //static variables are available across all instances of a class
     static MusicPlayer myMusicPlayer = null;
 
+    //Awake() is the first method called by Unity
+    //thus we are deleting the gameObject as soon as the
+    //program starts
     void Awake()
     {
-        //if myMusicPlayer already exists
+        //if MusicPlayer already exists
         if (myMusicPlayer != null)
         {
-            //Destroy the new object immediately
+            Debug.Log("Destroying object " + this.gameObject.GetInstanceID().ToString());
+            //destroy the new MusicPlayer
             Destroy(this.gameObject);
-            print("Duplicate music player self-destructing");
+
         }
-        else //if myMusicPlayer is null
+
+        else //if MusicPlayer is null
         {
-            //myMusicPlayer is this object and it is no longer null
+            //myMusicPlayer is this object
             myMusicPlayer = this;
 
-            //gameObject = musicPlayerObject with all its components
-            //the gameObject that this script is attached to
-            //music keeps on playing while browsing the scenes
-
-            GameObject.DontDestroyOnLoad(gameObject);
+            //this.gameObject = the gameObject attached to this script
+            //DontDestroyOnLoad = dont destroy this gameObject
+            //when loading a new scene
+            GameObject.DontDestroyOnLoad(this.gameObject);
         }
     }
-
-
-
 
     // Use this for initialization
     void Start () {
