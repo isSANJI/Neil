@@ -10,8 +10,18 @@ public class Ball : MonoBehaviour {
 
     private Vector3 paddleToBallVector;
 
-	// Use this for initialization
-	void Start () {
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasStarted == true)
+        {
+            this.GetComponent<AudioSource>().Play();
+            
+        }
+        
+    }
+
+    // Use this for initialization
+    void Start () {
 
         //it is assigning the object of type Paddle it finds to myPaddle
         //rather than passing it from Unity myself
